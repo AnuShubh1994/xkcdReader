@@ -33,8 +33,7 @@ class DetailVC: UIViewController,ANTableViewAdPlacerDelegate {
             placer = ANTableViewAdPlacer(tableView: tableView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: ANAdTableViewCell.self)
             placer.delegate = self
             placer.loadAds(forAdUnitID: "ping")
-            //placer.loadAds(forAdUnitID: <#T##String!#>)
-//            placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aBO9x8rWKvsJ-HI")
+            //placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aBO9x8rWKvsJ-HI")
             defaults.set(0, forKey: "adCounter")
         }
 

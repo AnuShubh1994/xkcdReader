@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 import AdsNativeSDK
-class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,PMClassDelegate  {
+class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout,PMClassDelegate,ANCollectionViewAdPlacerDelegate  {
     func pmViewControllerForPresentingModalView() -> UIViewController! {
         return self
     }
@@ -23,6 +23,8 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
     let defaults = UserDefaults.standard
     
     var toggleButton = UIBarButtonItem()
+    
+    var placer = ANCollectionViewAdPlacer()
     
     var comicArray = Array<Any>()
     
@@ -56,15 +58,23 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
         self.navigationItem.setRightBarButton(toggleButton, animated: true)
         getData()
         
-//        LogSetLevel(LogLevelDebug)
-//        pmClass = PMClass(adUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI", requestType: PM_REQUEST_TYPE(PM_REQUEST_TYPE_NATIVE), withBannerSize: CGSize(width: 0, height: 0))
-//        //self.pmClass = [[PMClass alloc] initWithAdUnitID:@"ping" requestType:PM_REQUEST_TYPE_NATIVE withBannerSize:CGSizeMake(0, 0)];
-//
-//        //For banner requests
-//        //  self.pmClass  = [[PMClass alloc] initWithAdUnitID:@"pUW7n6VJQesm68GmdYyDA4IZhNzjm8CC3KrDVzLU" requestType:PM_REQUEST_TYPE_BANNER withBannerSize:self.adViewContainer.bounds.size];
-//
-//        pmClass?.delegate = self
+        LogSetLevel(LogLevelDebug)
+        /*pmClass = PMClass(adUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI", requestType: PM_REQUEST_TYPE(PM_REQUEST_TYPE_NATIVE), withBannerSize: CGSize(width: 0, height: 0))
+        //self.pmClass = [[PMClass alloc] initWithAdUnitID:@"ping" requestType:PM_REQUEST_TYPE_NATIVE withBannerSize:CGSizeMake(0, 0)];
+
+        //For banner requests
+        //  self.pmClass  = [[PMClass alloc] initWithAdUnitID:@"pUW7n6VJQesm68GmdYyDA4IZhNzjm8CC3KrDVzLU" requestType:PM_REQUEST_TYPE_BANNER withBannerSize:self.adViewContainer.bounds.size];
+
+        pmClass?.delegate = self*/
+        let serverAdPositions = ANServerAdPositions()
+        
+        //The defaultRenderingClass can be switched dynamically by specifying it in the AdsNative UI
+        placer = ANCollectionViewAdPlacer(collectionView: collectionView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: CustomCell.self)
+        
+        placer.delegate = self
+        placer.loadAds(forAdUnitID: "AdUnitId")
     }
+
     
     func getData() {
         comicArray.removeAll()
@@ -178,24 +188,26 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if defaults.value(forKey: "adCounter") != nil {
-            adCounter = defaults.integer(forKey: "adCounter")
-            adCounter += 1
-            defaults.set(adCounter, forKey: "adCounter")
-        }else {
-            adCounter += 1
-            defaults.set(adCounter, forKey: "adCounter")
+        DispatchQueue.main.async {
+            if self.defaults.value(forKey: "adCounter") != nil {
+                self.adCounter = self.defaults.integer(forKey: "adCounter")
+                self.adCounter += 1
+                self.defaults.set(self.adCounter, forKey: "adCounter")
+            }else {
+                self.adCounter += 1
+                self.defaults.set(self.adCounter, forKey: "adCounter")
+            }
+            var dict = [String:Any]()
+            dict = (self.comicArray[indexPath.item] as? [String:Any])!
+            let vc = DetailVC()
+            vc.dict = dict
+            //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+            //        layout.scrollDirection = .vertical
+            //        layout.minimumLineSpacing = 0.0
+            //        vc.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+            //        vc.collectionView.register(DetailCell.self, forCellWithReuseIdentifier: cellIdentifier)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        var dict = [String:Any]()
-        dict = (comicArray[indexPath.item] as? [String:Any])!
-        let vc = DetailVC()
-        vc.dict = dict
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 0.0
-//        vc.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-//        vc.collectionView.register(DetailCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
