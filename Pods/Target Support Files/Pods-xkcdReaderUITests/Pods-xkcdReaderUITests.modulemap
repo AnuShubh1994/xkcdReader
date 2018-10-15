@@ -1,0 +1,6 @@
+framework module Pods_xkcdReaderUITests {
+  umbrella header "Pods-xkcdReaderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
