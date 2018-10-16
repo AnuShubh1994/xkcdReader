@@ -51,6 +51,7 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
         
         collectionView?.backgroundColor = UIColor.white
         
+        collectionView?.register(AdCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView?.register(CustomCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView?.register(ListCell.self, forCellWithReuseIdentifier: listCellIdentifier)
         
@@ -69,10 +70,10 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
         let serverAdPositions = ANServerAdPositions()
         
         //The defaultRenderingClass can be switched dynamically by specifying it in the AdsNative UI
-        placer = ANCollectionViewAdPlacer(collectionView: collectionView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: CustomCell.self)
+        placer = ANCollectionViewAdPlacer(collectionView: collectionView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: AdCell.self)
         
         placer.delegate = self
-        placer.loadAds(forAdUnitID: "AdUnitId")
+        placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI")
     }
 
     
@@ -201,11 +202,12 @@ class ViewController: UICollectionViewController,UICollectionViewDelegateFlowLay
             dict = (self.comicArray[indexPath.item] as? [String:Any])!
             let vc = DetailVC()
             vc.dict = dict
-            //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            //        layout.scrollDirection = .vertical
-            //        layout.minimumLineSpacing = 0.0
-            //        vc.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-            //        vc.collectionView.register(DetailCell.self, forCellWithReuseIdentifier: cellIdentifier)
+//            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .vertical
+//            layout.minimumLineSpacing = 0.0
+//            vc.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+//            vc.collectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

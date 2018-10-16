@@ -25,14 +25,15 @@
 		75127B16216F62C400499B57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B15216F62C400499B57 /* CoreGraphics.framework */; };
 		75127B18216F62CE00499B57 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B17216F62CE00499B57 /* AdSupport.framework */; };
 		75127B1A216F62D800499B57 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B19216F62D700499B57 /* WebKit.framework */; };
-		75127B1E216F648E00499B57 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75127B1D216F648E00499B57 /* AdView.swift */; };
 		75127B20216F76AE00499B57 /* AdsNativeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B0B216F61BA00499B57 /* AdsNativeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75127B23216F796800499B57 /* ANAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75127B22216F796800499B57 /* ANAdTableViewCell.xib */; };
 		75127B25216F799700499B57 /* ANAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75127B24216F799700499B57 /* ANAdTableViewCell.swift */; };
 		75127B26216F8E9F00499B57 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B1B216F62DF00499B57 /* StoreKit.framework */; };
 		756839AE2174C55700CEB126 /* AdsNativeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75127B0B216F61BA00499B57 /* AdsNativeSDK.framework */; };
-		756839B02174CAF600CEB126 /* ANAdTableViewCellNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 756839AF2174CAF600CEB126 /* ANAdTableViewCellNew.xib */; };
-		756839B22174CB2900CEB126 /* ANAdTableViewCellNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756839B12174CB2900CEB126 /* ANAdTableViewCellNew.swift */; };
+		756839BD2175D99500CEB126 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756839BC2175D99500CEB126 /* AdCell.swift */; };
+		756839C12175E10500CEB126 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756839C02175E10500CEB126 /* AdTableViewCell.swift */; };
+		756839C32175E75D00CEB126 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756839C22175E75D00CEB126 /* DetailViewController.swift */; };
+		756839C52175E79E00CEB126 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756839C42175E79E00CEB126 /* DetailCollectionViewCell.swift */; };
 		A74B37B7891F20BE92AE6006 /* Pods_xkcdReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47CB0FAF5EA9479C9F1F97F /* Pods_xkcdReaderTests.framework */; };
 		CA21B8063AE8136FBDB1FB7E /* Pods_xkcdReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08638F3B589AB22980675F98 /* Pods_xkcdReaderUITests.framework */; };
 		E3B8D0EB04BAC4EED96A1A68 /* Pods_xkcdReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B8A24C48A0F82F0D94A571 /* Pods_xkcdReader.framework */; };
@@ -100,11 +101,13 @@
 		75127B17216F62CE00499B57 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		75127B19216F62D700499B57 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		75127B1B216F62DF00499B57 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		75127B1D216F648E00499B57 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		75127B22216F796800499B57 /* ANAdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ANAdTableViewCell.xib; path = "../../../../Downloads/adsnative-sdk-ios-master/Sample App/ANAdTableViewCell.xib"; sourceTree = "<group>"; };
 		75127B24216F799700499B57 /* ANAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANAdTableViewCell.swift; sourceTree = "<group>"; };
-		756839AF2174CAF600CEB126 /* ANAdTableViewCellNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ANAdTableViewCellNew.xib; path = "../../../../Downloads/adsnative-sdk-ios-master/Sample App/ANAdTableViewCellNew.xib"; sourceTree = "<group>"; };
-		756839B12174CB2900CEB126 /* ANAdTableViewCellNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANAdTableViewCellNew.swift; sourceTree = "<group>"; };
+		756839B52175CF8F00CEB126 /* ANAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ANAdTableViewCell.xib; sourceTree = "<group>"; };
+		756839BC2175D99500CEB126 /* AdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		756839C02175E10500CEB126 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
+		756839C22175E75D00CEB126 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../../../../.Trash/DetailViewController.swift; sourceTree = "<group>"; };
+		756839C42175E79E00CEB126 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		89B8A24C48A0F82F0D94A571 /* Pods_xkcdReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xkcdReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47CB0FAF5EA9479C9F1F97F /* Pods_xkcdReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xkcdReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3EB038784265419F41386D /* Pods-xkcdReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xkcdReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-xkcdReader/Pods-xkcdReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,12 +177,10 @@
 		75127AC7216F2E5700499B57 /* xkcdReader */ = {
 			isa = PBXGroup;
 			children = (
-				756839AF2174CAF600CEB126 /* ANAdTableViewCellNew.xib */,
-				75127AC8216F2E5700499B57 /* AppDelegate.swift */,
+				756839B32175CF8B00CEB126 /* Supporting Files */,
 				75127AF6216F2E9200499B57 /* Controller */,
 				75127AF7216F2EB400499B57 /* View */,
 				75127ACF216F2E5C00499B57 /* Assets.xcassets */,
-				75127AD1216F2E5C00499B57 /* LaunchScreen.storyboard */,
 				75127AD4216F2E5C00499B57 /* Info.plist */,
 				75127B22216F796800499B57 /* ANAdTableViewCell.xib */,
 				75127B00216F331600499B57 /* Model */,
@@ -210,6 +211,7 @@
 			children = (
 				75127ACA216F2E5700499B57 /* ViewController.swift */,
 				75127B09216F5AB500499B57 /* DetailVC.swift */,
+				756839C22175E75D00CEB126 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,10 +221,11 @@
 			children = (
 				75127AF8216F30AF00499B57 /* ListCell.swift */,
 				75127AFA216F30E000499B57 /* CustomCell.swift */,
+				756839BC2175D99500CEB126 /* AdCell.swift */,
 				75127B07216F529300499B57 /* DetailCell.swift */,
-				75127B1D216F648E00499B57 /* AdView.swift */,
 				75127B24216F799700499B57 /* ANAdTableViewCell.swift */,
-				756839B12174CB2900CEB126 /* ANAdTableViewCellNew.swift */,
+				756839C02175E10500CEB126 /* AdTableViewCell.swift */,
+				756839C42175E79E00CEB126 /* DetailCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +236,16 @@
 				75127AFE216F331000499B57 /* UrlModule.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		756839B32175CF8B00CEB126 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75127AC8216F2E5700499B57 /* AppDelegate.swift */,
+				75127AD1216F2E5C00499B57 /* LaunchScreen.storyboard */,
+				756839B52175CF8F00CEB126 /* ANAdTableViewCell.xib */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AAB1B2BE8CE3CB380C706AEC /* Frameworks */ = {
@@ -383,7 +396,6 @@
 			files = (
 				75127AD3216F2E5C00499B57 /* LaunchScreen.storyboard in Resources */,
 				75127B23216F796800499B57 /* ANAdTableViewCell.xib in Resources */,
-				756839B02174CAF600CEB126 /* ANAdTableViewCellNew.xib in Resources */,
 				75127AD0216F2E5C00499B57 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,13 +574,15 @@
 				75127AF9216F30AF00499B57 /* ListCell.swift in Sources */,
 				75127ACB216F2E5700499B57 /* ViewController.swift in Sources */,
 				75127AFF216F331000499B57 /* UrlModule.swift in Sources */,
+				756839C32175E75D00CEB126 /* DetailViewController.swift in Sources */,
 				75127AFB216F30E000499B57 /* CustomCell.swift in Sources */,
+				756839BD2175D99500CEB126 /* AdCell.swift in Sources */,
 				75127B0A216F5AB500499B57 /* DetailVC.swift in Sources */,
+				756839C12175E10500CEB126 /* AdTableViewCell.swift in Sources */,
 				75127B08216F529300499B57 /* DetailCell.swift in Sources */,
-				756839B22174CB2900CEB126 /* ANAdTableViewCellNew.swift in Sources */,
 				75127B25216F799700499B57 /* ANAdTableViewCell.swift in Sources */,
 				75127AC9216F2E5700499B57 /* AppDelegate.swift in Sources */,
-				75127B1E216F648E00499B57 /* AdView.swift in Sources */,
+				756839C52175E79E00CEB126 /* DetailCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

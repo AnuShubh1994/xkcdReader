@@ -21,18 +21,22 @@ class DetailVC: UIViewController,ANTableViewAdPlacerDelegate {
     
     var placer = ANTableViewAdPlacer()
     
+    let cellIdentifier = "ImageCell"
+    
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(AdTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         view.backgroundColor = .white
-        if defaults.integer(forKey: "adCounter") >= 0 {
-            let serverAdPositions = ANClientAdPositions()
+        if defaults.integer(forKey: "adCounter") >= 5 {
+            let serverAdPositions = ANServerAdPositions()
             //The defaultRenderingClass can be switched to `ANAdTableViewCellNew` dynamically by specifying it in the AdsNative UI
             LogSetLevel(LogLevelDebug)
-            placer = ANTableViewAdPlacer(tableView: tableView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: ANAdTableViewCell.self)
+            placer = ANTableViewAdPlacer(tableView: tableView, viewController: self, adPositions: serverAdPositions, defaultAdRenderingClass: AdTableViewCell.self)
             placer.delegate = self
-            placer.loadAds(forAdUnitID: "ping")
+            //placer.loadAds(forAdUnitID: "ping")
+            placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aB09x8rWKvsJ-HI")
             //placer.loadAds(forAdUnitID: "2Pwo1otj1C5T8y6Uuz9v-xbY1aBO9x8rWKvsJ-HI")
             defaults.set(0, forKey: "adCounter")
         }
@@ -69,14 +73,14 @@ class DetailVC: UIViewController,ANTableViewAdPlacerDelegate {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         }
-        
         tableView.register(DetailCell.self, forCellReuseIdentifier: "cell")
+        
         tableView.cellLayoutMarginsFollowReadableWidth = false
         tableView.backgroundColor = UIColor.groupTableViewBackground
         tableView.keyboardDismissMode = .onDrag
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
     }
     
     
@@ -115,7 +119,15 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Using 'an_' counterpart for tableview methods
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailCell
+        
+//        if cell == nil {
+//            var nib = Bundle.main.loadNibNamed("SimpleTableViewCell", owner: self, options: nil)
+//            cell = nib?[0] as! DetailCell
+//        }
+        
         let imageName = dict["img"] as? String
         let date = "\(dict["day"] as! String)/\(dict["month"] as! String)/\(dict["year"] as! String)"
         cell.title.text = "\((dict["title"] as? String)!) (\(date))"//.attributedText = RequestModule.getAttributedTextForTitle(first: (dict["title"] as? String)!, second: date)
